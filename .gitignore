@@ -1,0 +1,14 @@
+node_modules/
+.env
+*.log
+
+cd
+start2
+frontend - Shortcut*.lnk
+marathi_request.json
+marathi_test.json
+test-openrouter.js
+test-transliterate.js
+test/
+transliteration_request.json
+transliteration_test.json

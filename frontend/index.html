@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Reviewly — Hospital Review Drafts</title>
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-mark">R</div>
+
+        <div>
+            <div class="logo-name">Reviewly</div>
+
+            <div class="logo-subtitle">
+                HOSPITAL REVIEW DRAFTS
+            </div>
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="/" class="nav-link active">
+            Generator
+        </a>
+
+        <a href="/history.html" class="nav-link">
+            History
+        </a>
+
+        <a href="/settings.html" class="nav-link">
+            Settings
+        </a>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-badge">
+            <span></span>
+            HOSPITAL REVIEW DRAFT GENERATOR
+        </div>
+
+        <h1>
+            Create a
+            <span>review draft</span>
+        </h1>
+
+        <p>
+            Create a simple, natural and editable hospital
+            review draft based on the topics you select.
+        </p>
+
+    </section>
+
+    <section class="generator-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <div class="small-title">
+                    REVIEW GENERATOR
+                </div>
+
+                <h2>
+                    Create Review
+                </h2>
+
+            </div>
+
+            <div class="private-badge">
+                Local &amp; Private
+            </div>
+
+        </div>
+
+        <!-- REVIEW TOPICS -->
+
+        <div class="section-heading">
+
+            <div>
+
+                <h3>
+                    Review Topics
+                </h3>
+
+                <p>
+                    Select one or more topics to guide the draft.
+                </p>
+
+            </div>
+
+            <span
+                id="selectedFilterCount"
+                class="topic-count"
+            >
+                0 selected
+            </span>
+
+        </div>
+
+        <div
+            id="filterGrid"
+            class="topic-chips"
+        >
+
+            <label class="topic-chip">
+
+                <input
+                    type="checkbox"
+                    name="reviewFilter"
+                    value="Hypertension"
+                >
+
+                <span class="chip-check">
+                    ✓
+                </span>
+
+                <span>
+                    Hypertension
+                </span>
+
+            </label>
+
+            <label class="topic-chip">
+
+                <input
+                    type="checkbox"
+                    name="reviewFilter"
+                    value="Diabetes"
+                >
+
+                <span class="chip-check">
+                    ✓
+                </span>
+
+                <span>
+                    Diabetes
+                </span>
+
+            </label>
+
+            <label class="topic-chip">
+
+                <input
+                    type="checkbox"
+                    name="reviewFilter"
+                    value="Staff"
+                >
+
+                <span class="chip-check">
+                    ✓
+                </span>
+
+                <span>
+                    Staff
+                </span>
+
+            </label>
+
+            <label class="topic-chip">
+
+                <input
+                    type="checkbox"
+                    name="reviewFilter"
+                    value="IPD Facility"
+                >
+
+                <span class="chip-check">
+                    ✓
+                </span>
+
+                <span>
+                    IPD Facility
+                </span>
+
+            </label>
+
+            <label class="topic-chip">
+
+                <input
+                    type="checkbox"
+                    name="reviewFilter"
+                    value="General"
+                >
+
+                <span class="chip-check">
+                    ✓
+                </span>
+
+                <span>
+                    General
+                </span>
+
+            </label>
+
+            <!-- ADD TOPIC BUTTON -->
+
+            <button
+                type="button"
+                id="addFilterBtn"
+                class="add-topic-btn"
+            >
+                <span>＋</span>
+                Add topic
+            </button>
+
+        </div>
+
+        <!-- INLINE ADD TOPIC FORM -->
+
+        <div
+            id="addTopicForm"
+            class="add-topic-form"
+            style="display: none;"
+        >
+
+            <input
+                type="text"
+                id="newTopicInput"
+                class="new-topic-input"
+                placeholder="Enter topic name..."
+                maxlength="50"
+                autocomplete="off"
+            >
+
+            <button
+                type="button"
+                id="confirmAddTopicBtn"
+                class="confirm-topic-btn"
+            >
+                Add
+            </button>
+
+            <button
+                type="button"
+                id="cancelAddTopicBtn"
+                class="cancel-topic-btn"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+        <!-- LANGUAGE -->
+
+        <div
+            class="section-heading"
+            style="margin-top: 30px;"
+        >
+
+            <div>
+
+                <h3>
+                    Language
+                </h3>
+
+                <p>
+                    Choose the language for your review draft.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="language-options">
+
+            <label class="language-option">
+
+                <input
+                    type="radio"
+                    name="reviewLanguage"
+                    value="English"
+                    checked
+                >
+
+                <span class="language-radio"></span>
+
+                <span>
+                    English
+                </span>
+
+            </label>
+
+            <label class="language-option">
+
+                <input
+                    type="radio"
+                    name="reviewLanguage"
+                    value="Marathi"
+                >
+
+                <span class="language-radio"></span>
+
+                <span>
+                    Marathi
+                </span>
+
+            </label>
+
+            <label class="language-option">
+
+                <input
+                    type="radio"
+                    name="reviewLanguage"
+                    value="Hindi"
+                >
+
+                <span class="language-radio"></span>
+
+                <span>
+                    Hindi
+                </span>
+
+            </label>
+
+        </div>
+
+        <!-- GENERATE -->
+
+        <button
+            type="button"
+            id="generateBtn"
+            class="generate-btn"
+        >
+
+            <span>
+                ✦
+            </span>
+
+            Generate Review
+
+        </button>
+
+        <!-- LOADING -->
+
+        <div
+            id="loading"
+            class="loading"
+            style="display: none;"
+        >
+
+            <div class="loader"></div>
+
+            <span>
+                Creating your review draft...
+            </span>
+
+        </div>
+
+        <!-- ERROR -->
+
+        <div
+            id="errorMessage"
+            class="error-message"
+        ></div>
+
+        <!-- RESULT -->
+
+        <section
+            id="resultSection"
+            class="result-section"
+            style="display: none;"
+        >
+
+            <div class="result-header">
+
+                <div>
+
+                    <div class="small-title">
+                        GENERATED DRAFT
+                    </div>
+
+                    <h2>
+                        Review Draft
+                    </h2>
+
+                </div>
+
+                <div class="success">
+                    ✓
+                </div>
+
+            </div>
+
+            <textarea
+                id="generatedReview"
+                spellcheck="true"
+                placeholder="Your review draft will appear here..."
+            ></textarea>
+
+            <div class="buttons">
+
+                <button
+                    type="button"
+                    id="copyBtn"
+                    class="copy-btn"
+                >
+                    ⧉ Copy Review
+                </button>
+
+                <button
+                    type="button"
+                    id="generateAgainBtn"
+                    class="again-btn"
+                >
+                    ↻ Generate Again
+                </button>
+
+            </div>
+
+        </section>
+
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✓
+            </div>
+
+            <div>
+
+                <strong>
+                    Editable
+                </strong>
+
+                <p>
+                    Edit the draft before using it.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                A
+            </div>
+
+            <div>
+
+                <strong>
+                    Multiple Languages
+                </strong>
+
+                <p>
+                    Generate drafts in English, Marathi or Hindi.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                +
+            </div>
+
+            <div>
+
+                <strong>
+                    Flexible Topics
+                </strong>
+
+                <p>
+                    Add new topics whenever you need them.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <span>
+        Reviewly
+    </span>
+
+    <span>
+        Hospital review draft generator
+    </span>
+
+</footer>
+
+<script src="/js/generator.js"></script>
+
+</body>
+
+</html>

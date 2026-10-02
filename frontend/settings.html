@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviewly | Settings</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-mark">
+                R
+            </div>
+            <div>
+                <div class="logo-name">
+                    Review
+                </div>
+                <div class="logo-subtitle">
+                     HOSPITAL REVIEW DRAFTS
+                </div>
+            </div>
+        </a>
+        <nav>
+            <a href="index.html" class="nav-link">
+                Generator
+            </a>
+            <a href="history.html" class="nav-link">
+                History
+            </a>
+            <a href="settings.html" class="nav-link active">
+                Settings
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero settings-hero">
+            <div class="hero-badge">
+                <span></span>
+                SETTINGS
+            </div>
+            <h1>
+                Make Reviewly
+                <br>
+                <span>work your way.</span>
+            </h1>
+            <p>
+                Manage your hospital details, doctors,
+                review style and other preferences.
+            </p>
+        </section>
+
+        <section class="settings-card">
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <div class="settings-icon">
+                        ⚙
+                    </div>
+                    <div>
+                        <h2>
+                            General
+                        </h2>
+                        <p>
+                            Basic hospital information.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="hospitalName">
+                        Hospital Name
+                    </label>
+                    <input
+                        type="text"
+                        id="hospitalName"
+                        placeholder="Enter hospital name"
+                    >
+                </div>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <div class="settings-icon">
+                        +
+                    </div>
+                    <div>
+                        <h2>
+                            Doctors
+                        </h2>
+                        <p>
+                            Manage doctors available for reviews.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="doctorName">
+                        Add Doctor
+                    </label>
+                    <div class="inline-form">
+                        <input
+                            type="text"
+                            id="doctorName"
+                            placeholder="Doctor name"
+                        >
+                        <button
+                            type="button"
+                            id="addDoctorBtn"
+                            class="small-primary-btn"
+                        >
+                            Add
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    id="doctorList"
+                    class="doctor-list"
+                ></div>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <div class="settings-icon">
+                        ✦
+                    </div>
+                    <div>
+                        <h2>
+                            Review Style
+                        </h2>
+                        <p>
+                            Configure the review length and doctor name frequency.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="percentage-row">
+                    <div>
+                        <label for="shortPercentage">
+                            Short Reviews
+                        </label>
+                        <p>
+                            1 long sentence or 2 short sentences
+                        </p>
+                    </div>
+                    <div class="percentage-input">
+                        <input
+                            type="number"
+                            id="shortPercentage"
+                            min="0"
+                            max="100"
+                            value="100"
+                        >
+                        <span>%</span>
+                    </div>
+                </div>
+
+                <div class="percentage-row">
+                    <div>
+                        <label for="mediumPercentage">
+                            Medium Reviews
+                        </label>
+                        <p>
+                            2 to 3 natural complete sentences
+                        </p>
+                    </div>
+                    <div class="percentage-input">
+                        <input
+                            type="number"
+                            id="mediumPercentage"
+                            min="0"
+                            max="100"
+                            value="0"
+                        >
+                        <span>%</span>
+                    </div>
+                </div>
+
+                <div class="percentage-row">
+                    <div>
+                        <label for="doctorNamePercentage">
+                            Doctor Name
+                        </label>
+                        <p>
+                            Include the selected doctor according to this percentage
+                        </p>
+                    </div>
+                    <div class="percentage-input">
+                        <input
+                            type="number"
+                            id="doctorNamePercentage"
+                            min="0"
+                            max="100"
+                            value="100"
+                        >
+                        <span>%</span>
+                    </div>
+                </div>
+
+                <!-- <div
+                    id="percentageMessage"
+                    class="settings-message"
+                ></div> -->
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <div class="save-area">
+                <button
+                    type="button"
+                    id="saveSettingsBtn"
+                    class="save-btn"
+                >
+                    Save Settings
+                </button>
+
+                <div
+                    id="saveMessage"
+                    class="save-message"
+                ></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>
+            Reviewly
+        </span>
+        <span>
+            Your experience. Your words.
+        </span>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>
