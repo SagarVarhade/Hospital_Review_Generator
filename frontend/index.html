@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,7 +162,7 @@
                 <div class="section-heading">
                     <div>
                         <h3>Send Review on WhatsApp</h3>
-                        <p>Share the suggested review text and hospital Google Review link.</p>
+                        <p>Share the review text and hospital Google Review link.</p>
                     </div>
                 </div>
 
@@ -229,30 +228,6 @@
     const sendButton = document.getElementById("sendReviewWhatsAppBtn");
     const status = document.getElementById("whatsappShareMessage");
 
-    const messages = {
-        English: {
-            greeting: "Hello!",
-            intro: "Thank you for visiting Radhegovind Hospital. If you wish, you can share your genuine experience on Google.",
-            title: "Suggested Review",
-            note: "You can copy this text and edit it to reflect your actual experience.",
-            link: "Google Review Link"
-        },
-        Marathi: {
-            greeting: "Namaskar!",
-            intro: "Radhegovind Hospital la bhet dilyabaddal dhanyavaad. Aaplyala vel aslyas, Google var aapla khara anubhav share karu shakta.",
-            title: "Suchavlela Review",
-            note: "Ha majkur copy karun aaplya kharya anubhavanusar badlu shakta.",
-            link: "Google Review chi link"
-        },
-        Hindi: {
-            greeting: "Namaste!",
-            intro: "Radhegovind Hospital aane ke liye dhanyavaad. Agar aap chahein, to Google par apna sachcha anubhav share kar sakte hain.",
-            title: "Sujhaya gaya Review",
-            note: "Aap is text ko copy karke apne asli anubhav ke anusaar badal sakte hain.",
-            link: "Google Review Link"
-        }
-    };
-
     numberInput.addEventListener("input", () => {
         numberInput.value = numberInput.value.replace(/\D/g, "").slice(0, 10);
     });
@@ -260,7 +235,6 @@
     sendButton.addEventListener("click", () => {
         const number = numberInput.value.trim();
         const review = document.getElementById("generatedReview").value.trim();
-        const language = document.querySelector('input[name="reviewLanguage"]:checked')?.value || "English";
 
         if (!review) {
             status.textContent = "Generate a review first.";
@@ -273,30 +247,20 @@
             return;
         }
 
-        const text = messages[language] || messages.English;
-
-        const message = [
-            text.greeting,
-            "",
-            text.intro,
-            "",
-            text.title,
-            "",
-            review,
-            "",
-            text.note,
-            "",
-            text.link + ":",
-            GOOGLE_REVIEW_LINK
-        ].join("\n");
+        // Keep only the Google Review link and the actual review text.
+        const message = `${GOOGLE_REVIEW_LINK}\n\n${review}`;
 
         const whatsappNumber = "91" + number;
-        const whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+        const whatsappUrl =
+            "https://wa.me/" +
+            whatsappNumber +
+            "?text=" +
+            encodeURIComponent(message);
 
         const whatsappWindow = window.open(whatsappUrl, "_blank");
 
         if (whatsappWindow) {
-            status.textContent = "WhatsApp opened with the message ready to review and send.";
+            status.textContent = "WhatsApp opened with the review ready to send.";
         } else {
             status.textContent = "Allow pop-ups for Reviewly to open WhatsApp.";
         }

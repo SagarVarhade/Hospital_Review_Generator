@@ -1,35 +1,13 @@
-
 const historyList = document.getElementById("historyList");
 const emptyHistory = document.getElementById("emptyHistory");
 const historyLoading = document.getElementById("historyLoading");
 const historyCount = document.getElementById("historyCount");
 const languageFilter = document.getElementById("languageFilter");
-const GOOGLE_REVIEW_LINK = "https://search.google.com/local/writereview?placeid=ChIJO_kAE2bW0TsRMnGbLhS4TWc";
-let allHistory = [];
 
-const messages = {
-    English: {
-        greeting: "Hello!",
-        intro: "Thank you for visiting Radhegovind Hospital. If you wish, you can share your genuine experience on Google.",
-        title: "Suggested Review",
-        note: "You can copy this text and edit it to reflect your actual experience.",
-        link: "Google Review Link"
-    },
-    Marathi: {
-        greeting: "Namaskar!",
-        intro: "Radhegovind Hospital la bhet dilyabaddal dhanyavaad. Aaplyala vel aslyas, Google var aapla khara anubhav share karu shakta.",
-        title: "Suchavlela Review",
-        note: "Ha majkur copy karun aaplya kharya anubhavanusar badlu shakta.",
-        link: "Google Review chi link"
-    },
-    Hindi: {
-        greeting: "Namaste!",
-        intro: "Radhegovind Hospital aane ke liye dhanyavaad. Agar aap chahein, to Google par apna sachcha anubhav share kar sakte hain.",
-        title: "Review ke liye sujhaya gaya text",
-        note: "Aap is text ko copy karke apne asli anubhav ke anusaar badal sakte hain.",
-        link: "Google Review Link"
-    }
-};
+const GOOGLE_REVIEW_LINK =
+    "https://search.google.com/local/writereview?placeid=ChIJO_kAE2bW0TsRMnGbLhS4TWc";
+
+let allHistory = [];
 
 async function loadHistory() {
     try {
@@ -53,22 +31,32 @@ async function loadHistory() {
     } finally {
         if (allHistory.length > 0) {
             historyLoading.style.display = "none";
-        } else if (historyLoading.textContent !== "Unable to load review history.") {
+        } else if (
+            historyLoading.textContent !== "Unable to load review history."
+        ) {
             historyLoading.style.display = "none";
         }
     }
 }
 
 function displayHistory() {
-    const selectedLanguage = languageFilter ? languageFilter.value : "English";
+    const selectedLanguage = languageFilter
+        ? languageFilter.value
+        : "English";
 
     const filteredHistory = allHistory.filter(review => {
-        return String(review.language || "English").toLowerCase() === selectedLanguage.toLowerCase();
+        return (
+            String(review.language || "English").toLowerCase() ===
+            selectedLanguage.toLowerCase()
+        );
     });
 
     historyList.innerHTML = "";
+
     const count = filteredHistory.length;
-    historyCount.textContent = `${count} ${count === 1 ? "review" : "reviews"}`;
+
+    historyCount.textContent =
+        `${count} ${count === 1 ? "review" : "reviews"}`;
 
     if (count === 0) {
         emptyHistory.style.display = "block";
@@ -98,19 +86,28 @@ function createHistoryItem(review) {
             <strong>${escapeHtml(hospital)}</strong>
             <span class="history-item-date">${escapeHtml(date)}</span>
         </div>
+
         <div class="history-item-meta">
             <span class="history-tag">${escapeHtml(language)}</span>
             <span class="history-tag">${escapeHtml(length)}</span>
-            ${doctor ? `<span class="history-tag">${escapeHtml(doctor)}</span>` : ""}
+            ${doctor
+                ? `<span class="history-tag">${escapeHtml(doctor)}</span>`
+                : ""}
         </div>
+
         <div class="history-review">${escapeHtml(text)}</div>
+
         <div class="history-actions">
             <button class="history-copy" type="button">Copy</button>
-            <button class="history-whatsapp" type="button">Send on WhatsApp</button>
+            <button class="history-whatsapp" type="button">
+                Send on WhatsApp
+            </button>
             <button class="history-delete" type="button">Delete</button>
         </div>
+
         <div class="history-whatsapp-form" hidden>
             <label>Patient WhatsApp number</label>
+
             <div class="phone-input-group">
                 <span class="country-code">🇮🇳 +91</span>
                 <input
@@ -123,76 +120,94 @@ function createHistoryItem(review) {
                     aria-label="Patient 10-digit Indian mobile number"
                 >
             </div>
-            <button class="history-send-whatsapp" type="button">Open WhatsApp Message</button>
-            <p class="history-whatsapp-status" role="status" aria-live="polite"></p>
+
+            <button class="history-send-whatsapp" type="button">
+                Open WhatsApp Message
+            </button>
+
+            <p
+                class="history-whatsapp-status"
+                role="status"
+                aria-live="polite"
+            ></p>
         </div>
     `;
 
+    // Copy review
     const copyButton = item.querySelector(".history-copy");
+
     copyButton.addEventListener("click", () => {
         copyReview(text, copyButton);
     });
 
+    // Delete review
     const deleteButton = item.querySelector(".history-delete");
+
     deleteButton.addEventListener("click", () => {
         deleteReview(review.id);
     });
 
+    // WhatsApp form
     const whatsappButton = item.querySelector(".history-whatsapp");
     const whatsappForm = item.querySelector(".history-whatsapp-form");
     const phoneInput = item.querySelector(".history-phone-number");
-    const sendWhatsAppButton = item.querySelector(".history-send-whatsapp");
+    const sendWhatsAppButton = item.querySelector(
+        ".history-send-whatsapp"
+    );
     const whatsappStatus = item.querySelector(".history-whatsapp-status");
 
     whatsappButton.addEventListener("click", () => {
         whatsappForm.hidden = !whatsappForm.hidden;
+
         if (!whatsappForm.hidden) {
             phoneInput.focus();
         }
     });
 
+    // Allow digits only, up to 10 digits.
     phoneInput.addEventListener("input", () => {
-        phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 10);
+        phoneInput.value = phoneInput.value
+            .replace(/\D/g, "")
+            .slice(0, 10);
     });
 
     sendWhatsAppButton.addEventListener("click", () => {
         const number = phoneInput.value.trim();
 
         if (!text.trim()) {
-            whatsappStatus.textContent = "This saved review has no text.";
+            whatsappStatus.textContent =
+                "This saved review has no text.";
             return;
         }
 
         if (!/^[6-9]\d{9}$/.test(number)) {
-            whatsappStatus.textContent = "Enter a valid 10-digit Indian mobile number.";
+            whatsappStatus.textContent =
+                "Enter a valid 10-digit Indian mobile number.";
+
             phoneInput.focus();
             return;
         }
 
-        const languageMessages = messages[language] || messages.English;
+        // Only the link and actual review text are included.
+        const message = `${GOOGLE_REVIEW_LINK}\n\n${text.trim()}`;
 
-        const message = [
-            languageMessages.greeting,
-            "",
-            languageMessages.intro,
-            "",
-            languageMessages.title,
-            "",
-            text,
-            "",
-            languageMessages.note,
-            "",
-            languageMessages.link + ":",
-            GOOGLE_REVIEW_LINK
-        ].join("\n");
+        const whatsappUrl =
+            "https://wa.me/91" +
+            number +
+            "?text=" +
+            encodeURIComponent(message);
 
-        const whatsappUrl = "https://wa.me/91" + number + "?text=" + encodeURIComponent(message);
-        const whatsappWindow = window.open(whatsappUrl, "_blank");
+        const whatsappWindow = window.open(
+            whatsappUrl,
+            "_blank"
+        );
 
         if (whatsappWindow) {
-            whatsappStatus.textContent = "WhatsApp opened with the message ready to send.";
+            whatsappStatus.textContent =
+                "WhatsApp opened with the message ready to send.";
         } else {
-            whatsappStatus.textContent = "Allow pop-ups to open WhatsApp.";
+            whatsappStatus.textContent =
+                "Allow pop-ups to open WhatsApp.";
         }
     });
 
@@ -208,6 +223,7 @@ async function copyReview(text, button) {
         await navigator.clipboard.writeText(text);
     } catch {
         const temporary = document.createElement("textarea");
+
         temporary.value = text;
         document.body.appendChild(temporary);
         temporary.select();
@@ -225,25 +241,35 @@ async function copyReview(text, button) {
 
 async function deleteReview(id) {
     const confirmed = confirm("Delete this saved review?");
+
     if (!confirmed) {
         return;
     }
 
     try {
-        const response = await fetch(`/history/${encodeURIComponent(id)}`, {
-            method: "DELETE"
-        });
+        const response = await fetch(
+            `/history/${encodeURIComponent(id)}`,
+            {
+                method: "DELETE"
+            }
+        );
 
         const data = await response.json();
 
         if (!response.ok || !data.success) {
-            throw new Error(data.message || "Unable to delete review.");
+            throw new Error(
+                data.message || "Unable to delete review."
+            );
         }
 
-        allHistory = allHistory.filter(review => String(review.id) !== String(id));
+        allHistory = allHistory.filter(
+            review => String(review.id) !== String(id)
+        );
+
         displayHistory();
     } catch (error) {
         console.error("Delete history error:", error);
+
         alert(error.message || "Unable to delete review.");
     }
 }
