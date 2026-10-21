@@ -162,7 +162,7 @@
                 <div class="section-heading">
                     <div>
                         <h3>Send Review on WhatsApp</h3>
-                        <p>Share the review text and hospital Google Review link.</p>
+                        <p>Send only the review text to the patient.</p>
                     </div>
                 </div>
 
@@ -223,7 +223,6 @@
 <script src="/js/generator.js"></script>
 <script>
 (() => {
-    const GOOGLE_REVIEW_LINK = "https://search.google.com/local/writereview?placeid=ChIJO_kAE2bW0TsRMnGbLhS4TWc";
     const numberInput = document.getElementById("patientWhatsAppNumber");
     const sendButton = document.getElementById("sendReviewWhatsAppBtn");
     const status = document.getElementById("whatsappShareMessage");
@@ -247,8 +246,8 @@
             return;
         }
 
-        // Keep only the Google Review link and the actual review text.
-        const message = `${GOOGLE_REVIEW_LINK}\n\n${review}`;
+        // WhatsApp message contains only the review text.
+        const message = review;
 
         const whatsappNumber = "91" + number;
         const whatsappUrl =

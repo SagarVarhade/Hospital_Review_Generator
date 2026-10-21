@@ -4,9 +4,6 @@ const historyLoading = document.getElementById("historyLoading");
 const historyCount = document.getElementById("historyCount");
 const languageFilter = document.getElementById("languageFilter");
 
-const GOOGLE_REVIEW_LINK =
-    "https://search.google.com/local/writereview?placeid=ChIJO_kAE2bW0TsRMnGbLhS4TWc";
-
 let allHistory = [];
 
 async function loadHistory() {
@@ -147,7 +144,7 @@ function createHistoryItem(review) {
         deleteReview(review.id);
     });
 
-    // WhatsApp form
+    // WhatsApp controls
     const whatsappButton = item.querySelector(".history-whatsapp");
     const whatsappForm = item.querySelector(".history-whatsapp-form");
     const phoneInput = item.querySelector(".history-phone-number");
@@ -164,7 +161,7 @@ function createHistoryItem(review) {
         }
     });
 
-    // Allow digits only, up to 10 digits.
+    // Accept digits only, up to 10 digits.
     phoneInput.addEventListener("input", () => {
         phoneInput.value = phoneInput.value
             .replace(/\D/g, "")
@@ -188,8 +185,8 @@ function createHistoryItem(review) {
             return;
         }
 
-        // Only the link and actual review text are included.
-        const message = `${GOOGLE_REVIEW_LINK}\n\n${text.trim()}`;
+        // WhatsApp message contains only the review text.
+        const message = text.trim();
 
         const whatsappUrl =
             "https://wa.me/91" +
@@ -204,7 +201,7 @@ function createHistoryItem(review) {
 
         if (whatsappWindow) {
             whatsappStatus.textContent =
-                "WhatsApp opened with the message ready to send.";
+                "WhatsApp opened with the review ready to send.";
         } else {
             whatsappStatus.textContent =
                 "Allow pop-ups to open WhatsApp.";
@@ -269,7 +266,6 @@ async function deleteReview(id) {
         displayHistory();
     } catch (error) {
         console.error("Delete history error:", error);
-
         alert(error.message || "Unable to delete review.");
     }
 }
