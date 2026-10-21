@@ -4884,3 +4884,101 @@ footer,
         padding: 12px;
     }
 }
+
+/* History page action buttons — consistent styling */
+.history-actions {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.history-actions .history-copy,
+.history-actions .history-whatsapp,
+.history-actions .history-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 auto;
+    min-width: 100px;
+    min-height: 42px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+}
+
+/* Copy button */
+.history-actions .history-copy {
+    border-color: #cbdcff;
+    background: #eff5ff;
+    color: #245bc0;
+}
+
+.history-actions .history-copy:hover {
+    border-color: #a9c5ff;
+    background: #e0ebff;
+}
+
+/* WhatsApp button */
+.history-actions .history-whatsapp {
+    border-color: #16834a;
+    background: #16834a;
+    color: #ffffff;
+}
+
+.history-actions .history-whatsapp:hover {
+    border-color: #116b3b;
+    background: #116b3b;
+}
+
+/* Delete button */
+.history-actions .history-delete {
+    border-color: #fecaca;
+    background: #ffffff;
+    color: #dc2626;
+}
+
+.history-actions .history-delete:hover {
+    border-color: #fca5a5;
+    background: #fef2f2;
+}
+
+/* Keyboard accessibility */
+.history-actions button:focus-visible,
+.history-send-whatsapp:focus-visible {
+    outline: 3px solid rgba(37, 117, 252, 0.3);
+    outline-offset: 2px;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    .history-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 9px;
+        width: 100%;
+    }
+
+    .history-actions .history-copy,
+    .history-actions .history-whatsapp,
+    .history-actions .history-delete {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 11px 12px;
+        font-size: 14px;
+    }
+}
