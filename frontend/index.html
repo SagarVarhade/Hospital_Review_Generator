@@ -1,240 +1,93 @@
+
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviewly — Hospital Review Drafts</title>
-    <link
-        rel="stylesheet"
-        href="/css/style.css"
-    >
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
-
 <header class="navbar">
-
     <div class="logo">
-
         <div class="logo-mark">R</div>
-
         <div>
             <div class="logo-name">Reviewly</div>
-
-            <div class="logo-subtitle">
-                HOSPITAL REVIEW DRAFTS
-            </div>
+            <div class="logo-subtitle">HOSPITAL REVIEW DRAFTS</div>
         </div>
-
     </div>
-
     <nav>
-
-        <a href="/" class="nav-link active">
-            Generator
-        </a>
-
-        <a href="/history.html" class="nav-link">
-            History
-        </a>
-
-        <a href="/settings.html" class="nav-link">
-            Settings
-        </a>
-
+        <a href="/" class="nav-link active">Generator</a>
+        <a href="/history.html" class="nav-link">History</a>
+        <a href="/settings.html" class="nav-link">Settings</a>
     </nav>
-
 </header>
 
 <main>
-
     <section class="hero">
-
         <div class="hero-badge">
             <span></span>
             HOSPITAL REVIEW DRAFT GENERATOR
         </div>
-
-        <h1>
-            Create a
-            <span>review draft</span>
-        </h1>
-
-        <p>
-            Create a simple, natural and editable hospital
-            review draft based on the topics you select.
-        </p>
-
+        <h1>Create a <span>review draft</span></h1>
+        <p>Create a simple, natural and editable hospital review draft based on the topics you select.</p>
     </section>
 
     <section class="generator-card">
-
         <div class="card-header">
-
             <div>
-
-                <div class="small-title">
-                    REVIEW GENERATOR
-                </div>
-
-                <h2>
-                    Create Review
-                </h2>
-
+                <div class="small-title">REVIEW GENERATOR</div>
+                <h2>Create Review</h2>
             </div>
-
-            <div class="private-badge">
-                Local &amp; Private
-            </div>
-
+            <div class="private-badge">Local &amp; Private</div>
         </div>
-
-        <!-- REVIEW TOPICS -->
 
         <div class="section-heading">
-
             <div>
-
-                <h3>
-                    Review Topics
-                </h3>
-
-                <p>
-                    Select one or more topics to guide the draft.
-                </p>
-
+                <h3>Review Topics</h3>
+                <p>Select one or more topics to guide the draft.</p>
             </div>
-
-            <span
-                id="selectedFilterCount"
-                class="topic-count"
-            >
-                0 selected
-            </span>
-
+            <span id="selectedFilterCount" class="topic-count">0 selected</span>
         </div>
 
-        <div
-            id="filterGrid"
-            class="topic-chips"
-        >
-
+        <div id="filterGrid" class="topic-chips">
             <label class="topic-chip">
-
-                <input
-                    type="checkbox"
-                    name="reviewFilter"
-                    value="Hypertension"
-                >
-
-                <span class="chip-check">
-                    ✓
-                </span>
-
-                <span>
-                    Hypertension
-                </span>
-
+                <input type="checkbox" name="reviewFilter" value="Hypertension">
+                <span class="chip-check">✓</span>
+                <span>Hypertension</span>
             </label>
 
             <label class="topic-chip">
-
-                <input
-                    type="checkbox"
-                    name="reviewFilter"
-                    value="Diabetes"
-                >
-
-                <span class="chip-check">
-                    ✓
-                </span>
-
-                <span>
-                    Diabetes
-                </span>
-
+                <input type="checkbox" name="reviewFilter" value="Diabetes">
+                <span class="chip-check">✓</span>
+                <span>Diabetes</span>
             </label>
 
             <label class="topic-chip">
-
-                <input
-                    type="checkbox"
-                    name="reviewFilter"
-                    value="Staff"
-                >
-
-                <span class="chip-check">
-                    ✓
-                </span>
-
-                <span>
-                    Staff
-                </span>
-
+                <input type="checkbox" name="reviewFilter" value="Staff">
+                <span class="chip-check">✓</span>
+                <span>Staff</span>
             </label>
 
             <label class="topic-chip">
-
-                <input
-                    type="checkbox"
-                    name="reviewFilter"
-                    value="IPD Facility"
-                >
-
-                <span class="chip-check">
-                    ✓
-                </span>
-
-                <span>
-                    IPD Facility
-                </span>
-
+                <input type="checkbox" name="reviewFilter" value="IPD Facility">
+                <span class="chip-check">✓</span>
+                <span>IPD Facility</span>
             </label>
 
             <label class="topic-chip">
-
-                <input
-                    type="checkbox"
-                    name="reviewFilter"
-                    value="General"
-                >
-
-                <span class="chip-check">
-                    ✓
-                </span>
-
-                <span>
-                    General
-                </span>
-
+                <input type="checkbox" name="reviewFilter" value="General">
+                <span class="chip-check">✓</span>
+                <span>General</span>
             </label>
 
-            <!-- ADD TOPIC BUTTON -->
-
-            <button
-                type="button"
-                id="addFilterBtn"
-                class="add-topic-btn"
-            >
+            <button type="button" id="addFilterBtn" class="add-topic-btn">
                 <span>＋</span>
                 Add topic
             </button>
-
         </div>
 
-        <!-- INLINE ADD TOPIC FORM -->
-
-        <div
-            id="addTopicForm"
-            class="add-topic-form"
-            style="display: none;"
-        >
-
+        <div id="addTopicForm" class="add-topic-form" style="display:none;">
             <input
                 type="text"
                 id="newTopicInput"
@@ -243,164 +96,56 @@
                 maxlength="50"
                 autocomplete="off"
             >
-
-            <button
-                type="button"
-                id="confirmAddTopicBtn"
-                class="confirm-topic-btn"
-            >
-                Add
-            </button>
-
-            <button
-                type="button"
-                id="cancelAddTopicBtn"
-                class="cancel-topic-btn"
-            >
-                Cancel
-            </button>
-
+            <button type="button" id="confirmAddTopicBtn" class="confirm-topic-btn">Add</button>
+            <button type="button" id="cancelAddTopicBtn" class="cancel-topic-btn">Cancel</button>
         </div>
 
-        <!-- LANGUAGE -->
-
-        <div
-            class="section-heading"
-            style="margin-top: 30px;"
-        >
-
+        <div class="section-heading" style="margin-top:30px;">
             <div>
-
-                <h3>
-                    Language
-                </h3>
-
-                <p>
-                    Choose the language for your review draft.
-                </p>
-
+                <h3>Language</h3>
+                <p>Choose the language for your review draft.</p>
             </div>
-
         </div>
 
         <div class="language-options">
-
             <label class="language-option">
-
-                <input
-                    type="radio"
-                    name="reviewLanguage"
-                    value="English"
-                    checked
-                >
-
+                <input type="radio" name="reviewLanguage" value="English" checked>
                 <span class="language-radio"></span>
-
-                <span>
-                    English
-                </span>
-
+                <span>English</span>
             </label>
 
             <label class="language-option">
-
-                <input
-                    type="radio"
-                    name="reviewLanguage"
-                    value="Marathi"
-                >
-
+                <input type="radio" name="reviewLanguage" value="Marathi">
                 <span class="language-radio"></span>
-
-                <span>
-                    Marathi
-                </span>
-
+                <span>Marathi</span>
             </label>
 
             <label class="language-option">
-
-                <input
-                    type="radio"
-                    name="reviewLanguage"
-                    value="Hindi"
-                >
-
+                <input type="radio" name="reviewLanguage" value="Hindi">
                 <span class="language-radio"></span>
-
-                <span>
-                    Hindi
-                </span>
-
+                <span>Hindi</span>
             </label>
-
         </div>
 
-        <!-- GENERATE -->
-
-        <button
-            type="button"
-            id="generateBtn"
-            class="generate-btn"
-        >
-
-            <span>
-                ✦
-            </span>
-
+        <button type="button" id="generateBtn" class="generate-btn">
+            <span>✦</span>
             Generate Review
-
         </button>
 
-        <!-- LOADING -->
-
-        <div
-            id="loading"
-            class="loading"
-            style="display: none;"
-        >
-
+        <div id="loading" class="loading" style="display:none;">
             <div class="loader"></div>
-
-            <span>
-                Creating your review draft...
-            </span>
-
+            <span>Creating your review draft...</span>
         </div>
 
-        <!-- ERROR -->
+        <div id="errorMessage" class="error-message"></div>
 
-        <div
-            id="errorMessage"
-            class="error-message"
-        ></div>
-
-        <!-- RESULT -->
-
-        <section
-            id="resultSection"
-            class="result-section"
-            style="display: none;"
-        >
-
+        <section id="resultSection" class="result-section" style="display:none;">
             <div class="result-header">
-
                 <div>
-
-                    <div class="small-title">
-                        GENERATED DRAFT
-                    </div>
-
-                    <h2>
-                        Review Draft
-                    </h2>
-
+                    <div class="small-title">GENERATED DRAFT</div>
+                    <h2>Review Draft</h2>
                 </div>
-
-                <div class="success">
-                    ✓
-                </div>
-
+                <div class="success">✓</div>
             </div>
 
             <textarea
@@ -410,111 +155,153 @@
             ></textarea>
 
             <div class="buttons">
-
-                <button
-                    type="button"
-                    id="copyBtn"
-                    class="copy-btn"
-                >
-                    ⧉ Copy Review
-                </button>
-
-                <button
-                    type="button"
-                    id="generateAgainBtn"
-                    class="again-btn"
-                >
-                    ↻ Generate Again
-                </button>
-
+                <button type="button" id="copyBtn" class="copy-btn">⧉ Copy Review</button>
+                <button type="button" id="generateAgainBtn" class="again-btn">↻ Generate Again</button>
             </div>
 
+            <div class="whatsapp-share">
+                <div class="section-heading">
+                    <div>
+                        <h3>Send Review on WhatsApp</h3>
+                        <p>Share the suggested review text and hospital Google Review link.</p>
+                    </div>
+                </div>
+
+                <label for="patientWhatsAppNumber">Patient WhatsApp number</label>
+                <div class="phone-input-group">
+                    <span class="country-code">🇮🇳 +91</span>
+                    <input
+                        type="tel"
+                        id="patientWhatsAppNumber"
+                        placeholder="Enter 10-digit number"
+                        inputmode="numeric"
+                        autocomplete="tel-national"
+                        maxlength="10"
+                    >
+                </div>
+
+                <button type="button" id="sendReviewWhatsAppBtn" class="copy-btn">
+                    Send Review on WhatsApp
+                </button>
+
+                <p id="whatsappShareMessage" role="status" aria-live="polite"></p>
+            </div>
         </section>
-
     </section>
-
-    <!-- FEATURES -->
 
     <section class="features">
-
         <div class="feature">
-
-            <div class="feature-icon">
-                ✓
-            </div>
-
+            <div class="feature-icon">✓</div>
             <div>
-
-                <strong>
-                    Editable
-                </strong>
-
-                <p>
-                    Edit the draft before using it.
-                </p>
-
+                <strong>Editable</strong>
+                <p>Edit the draft before using it.</p>
             </div>
-
         </div>
 
         <div class="feature">
-
-            <div class="feature-icon">
-                A
-            </div>
-
+            <div class="feature-icon">A</div>
             <div>
-
-                <strong>
-                    Multiple Languages
-                </strong>
-
-                <p>
-                    Generate drafts in English, Marathi or Hindi.
-                </p>
-
+                <strong>Multiple Languages</strong>
+                <p>Generate drafts in English, Marathi or Hindi.</p>
             </div>
-
         </div>
 
         <div class="feature">
-
-            <div class="feature-icon">
-                +
-            </div>
-
+            <div class="feature-icon">+</div>
             <div>
-
-                <strong>
-                    Flexible Topics
-                </strong>
-
-                <p>
-                    Add new topics whenever you need them.
-                </p>
-
+                <strong>Flexible Topics</strong>
+                <p>Add new topics whenever you need them.</p>
             </div>
-
         </div>
-
     </section>
-
 </main>
 
 <footer>
-
-    <span>
-        Reviewly
-    </span>
-
-    <span>
-        Hospital review draft generator
-    </span>
-
+    <span>Reviewly</span>
+    <span>Hospital review draft generator</span>
 </footer>
 
 <script src="/js/generator.js"></script>
+<script>
+(() => {
+    const GOOGLE_REVIEW_LINK = "https://search.google.com/local/writereview?placeid=ChIJO_kAE2bW0TsRMnGbLhS4TWc";
+    const numberInput = document.getElementById("patientWhatsAppNumber");
+    const sendButton = document.getElementById("sendReviewWhatsAppBtn");
+    const status = document.getElementById("whatsappShareMessage");
 
+    const messages = {
+        English: {
+            greeting: "Hello!",
+            intro: "Thank you for visiting Radhegovind Hospital. If you wish, you can share your genuine experience on Google.",
+            title: "Suggested Review",
+            note: "You can copy this text and edit it to reflect your actual experience.",
+            link: "Google Review Link"
+        },
+        Marathi: {
+            greeting: "Namaskar!",
+            intro: "Radhegovind Hospital la bhet dilyabaddal dhanyavaad. Aaplyala vel aslyas, Google var aapla khara anubhav share karu shakta.",
+            title: "Suchavlela Review",
+            note: "Ha majkur copy karun aaplya kharya anubhavanusar badlu shakta.",
+            link: "Google Review chi link"
+        },
+        Hindi: {
+            greeting: "Namaste!",
+            intro: "Radhegovind Hospital aane ke liye dhanyavaad. Agar aap chahein, to Google par apna sachcha anubhav share kar sakte hain.",
+            title: "Sujhaya gaya Review",
+            note: "Aap is text ko copy karke apne asli anubhav ke anusaar badal sakte hain.",
+            link: "Google Review Link"
+        }
+    };
+
+    numberInput.addEventListener("input", () => {
+        numberInput.value = numberInput.value.replace(/\D/g, "").slice(0, 10);
+    });
+
+    sendButton.addEventListener("click", () => {
+        const number = numberInput.value.trim();
+        const review = document.getElementById("generatedReview").value.trim();
+        const language = document.querySelector('input[name="reviewLanguage"]:checked')?.value || "English";
+
+        if (!review) {
+            status.textContent = "Generate a review first.";
+            return;
+        }
+
+        if (!/^[6-9]\d{9}$/.test(number)) {
+            status.textContent = "Enter a valid 10-digit Indian mobile number.";
+            numberInput.focus();
+            return;
+        }
+
+        const text = messages[language] || messages.English;
+
+        const message = [
+            text.greeting,
+            "",
+            text.intro,
+            "",
+            text.title,
+            "",
+            review,
+            "",
+            text.note,
+            "",
+            text.link + ":",
+            GOOGLE_REVIEW_LINK
+        ].join("\n");
+
+        const whatsappNumber = "91" + number;
+        const whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+
+        const whatsappWindow = window.open(whatsappUrl, "_blank");
+
+        if (whatsappWindow) {
+            status.textContent = "WhatsApp opened with the message ready to review and send.";
+        } else {
+            status.textContent = "Allow pop-ups for Reviewly to open WhatsApp.";
+        }
+    });
+})();
+</script>
 </body>
-
 </html>
